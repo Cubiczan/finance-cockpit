@@ -1,4 +1,5 @@
 import { set } from '@forge/kvs';
+import crypto from '@forge/crypto';
 
 export async function handler(request) {
   if (request.method !== 'POST') {
@@ -7,6 +8,19 @@ export async function handler(request) {
 
   try {
     const body = await request.json();
+    const rawBody = JSON.stringify(body);
+    const signature = request.headers.get('x-uipath-signature') || request.headers.get('x-webhook-signature');
+    const secret = process.env.UIPATH_WEBHOOK_SECRET || process.env.WEBHOOK_SECRET || '';
+
+    if (secret && signature) {
+      const expected = await crypto.sha256().update(secret + rawBody).digest().then(h => h.toHex());
+      if (signature !== expected) {
+        return { status: 401, body: { error: 'Invalid webhook signature' } };
+      }
+    } else if (secret) {
+      return { status: 401, body: { error: 'Missing X-Webhook-Signature or X-UiPath-Signature header' } };
+    }
+
     if (!body.budget || !body.burnRate || !body.cashForecast || !body.workingCapital) {
       return { status: 400, body: { error: 'Missing required fields: budget, burnRate, cashForecast, workingCapital' } };
     }

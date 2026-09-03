@@ -1,8 +1,9 @@
 import { set } from '@forge/kvs';
 import crypto from '@forge/crypto';
 
-// HMAC webhook verification. Set WEBHOOK_SECRET in Forge app storage.
-// POST requests must include an X-Webhook-Signature header: hex(sha256(secret + body))
+// HMAC webhook verification. Set WEBHOOK_SECRET or UIPATH_WEBHOOK_SECRET in Forge app storage.
+// POST requests must include an X-Webhook-Signature or X-UiPath-Signature header:
+// hex(sha256(secret + body))
 export async function handler(request) {
   if (request.method !== 'POST') {
     return { status: 405, body: { error: 'Method not allowed' } };
@@ -13,8 +14,8 @@ export async function handler(request) {
     const rawBody = JSON.stringify(body);
 
     // HMAC signature verification
-    const signature = request.headers.get('x-webhook-signature');
-    const secret = process.env.WEBHOOK_SECRET || '';
+    const signature = request.headers.get('x-uipath-signature') || request.headers.get('x-webhook-signature');
+    const secret = process.env.UIPATH_WEBHOOK_SECRET || process.env.WEBHOOK_SECRET || '';
 
     if (secret && signature) {
       const expected = await crypto.sha256().update(secret + rawBody).digest().then(h => h.toHex());

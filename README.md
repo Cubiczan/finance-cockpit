@@ -172,6 +172,8 @@ Without a proxy, Finance Cockpit serves comprehensive mock data representing a $
 
 ### Webtrigger (External Data Push)
 
+UiPath can post the same dashboard payload to this webhook. Use either `WEBHOOK_SECRET` or `UIPATH_WEBHOOK_SECRET` and send the signature in `X-Webhook-Signature` or `X-UiPath-Signature`.
+
 ```bash
 curl -X POST "https://<webtrigger-url>" \
   -H "Content-Type: application/json" \
