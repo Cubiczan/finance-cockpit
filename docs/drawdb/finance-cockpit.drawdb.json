@@ -1,0 +1,129 @@
+{
+  "title": "finance-cockpit",
+  "tables": [
+    {
+      "id": 0,
+      "name": "finance_project",
+      "x": 80,
+      "y": 80,
+      "fields": [
+        {"id": 0, "name": "project_key", "type": "TEXT", "default": "", "check": "", "primary": true, "unique": false, "notNull": true, "increment": false, "comment": ""},
+        {"id": 1, "name": "name", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 2, "name": "currency", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 3, "name": "fiscal_year_start_month", "type": "INTEGER", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 4, "name": "owner", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 5, "name": "created_at", "type": "TIMESTAMP", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 6, "name": "updated_at", "type": "TIMESTAMP", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""}
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#7d9dff"
+    },
+    {
+      "id": 1,
+      "name": "budget_snapshot",
+      "x": 420,
+      "y": 80,
+      "fields": [
+        {"id": 0, "name": "id", "type": "INTEGER", "default": "", "check": "", "primary": true, "unique": false, "notNull": true, "increment": true, "comment": ""},
+        {"id": 1, "name": "project_key", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": true, "increment": false, "comment": ""},
+        {"id": 2, "name": "period", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 3, "name": "revenue", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 4, "name": "opex", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 5, "name": "capex", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 6, "name": "gross_margin", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 7, "name": "ebitda", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 8, "name": "created_at", "type": "TIMESTAMP", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""}
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffe159"
+    },
+    {
+      "id": 2,
+      "name": "burn_rate_snapshot",
+      "x": 760,
+      "y": 80,
+      "fields": [
+        {"id": 0, "name": "id", "type": "INTEGER", "default": "", "check": "", "primary": true, "unique": false, "notNull": true, "increment": true, "comment": ""},
+        {"id": 1, "name": "project_key", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": true, "increment": false, "comment": ""},
+        {"id": 2, "name": "month", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 3, "name": "burn_rate", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 4, "name": "runway_months", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 5, "name": "cash_balance", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 6, "name": "net_new_mrr", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""}
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#9be7a2"
+    },
+    {
+      "id": 3,
+      "name": "cash_forecast_snapshot",
+      "x": 1100,
+      "y": 80,
+      "fields": [
+        {"id": 0, "name": "id", "type": "INTEGER", "default": "", "check": "", "primary": true, "unique": false, "notNull": true, "increment": true, "comment": ""},
+        {"id": 1, "name": "project_key", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": true, "increment": false, "comment": ""},
+        {"id": 2, "name": "forecast_date", "type": "DATE", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 3, "name": "opening_cash", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 4, "name": "inflows", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 5, "name": "outflows", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 6, "name": "ending_cash", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 7, "name": "confidence", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""}
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffaf7d"
+    },
+    {
+      "id": 4,
+      "name": "working_capital_snapshot",
+      "x": 1440,
+      "y": 80,
+      "fields": [
+        {"id": 0, "name": "id", "type": "INTEGER", "default": "", "check": "", "primary": true, "unique": false, "notNull": true, "increment": true, "comment": ""},
+        {"id": 1, "name": "project_key", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": true, "increment": false, "comment": ""},
+        {"id": 2, "name": "as_of_date", "type": "DATE", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 3, "name": "ar", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 4, "name": "ap", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 5, "name": "inventory", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 6, "name": "dso", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 7, "name": "dpo", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 8, "name": "dsi", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""}
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ff7d7d"
+    },
+    {
+      "id": 5,
+      "name": "working_capital_recommendation",
+      "x": 1780,
+      "y": 80,
+      "fields": [
+        {"id": 0, "name": "id", "type": "INTEGER", "default": "", "check": "", "primary": true, "unique": false, "notNull": true, "increment": true, "comment": ""},
+        {"id": 1, "name": "working_capital_snapshot_id", "type": "INTEGER", "default": "", "check": "", "primary": false, "unique": false, "notNull": true, "increment": false, "comment": ""},
+        {"id": 2, "name": "recommendation", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 3, "name": "impact", "type": "NUMERIC", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 4, "name": "priority", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""},
+        {"id": 5, "name": "owner", "type": "TEXT", "default": "", "check": "", "primary": false, "unique": false, "notNull": false, "increment": false, "comment": ""}
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#8fd3ff"
+    }
+  ],
+  "relationships": [
+    {"startTableId": 1, "startFieldId": 1, "endTableId": 0, "endFieldId": 0, "name": "budget_snapshot_project_key_fk", "cardinality": "many_to_one", "updateConstraint": "No action", "deleteConstraint": "No action", "id": 0},
+    {"startTableId": 2, "startFieldId": 1, "endTableId": 0, "endFieldId": 0, "name": "burn_rate_snapshot_project_key_fk", "cardinality": "many_to_one", "updateConstraint": "No action", "deleteConstraint": "No action", "id": 1},
+    {"startTableId": 3, "startFieldId": 1, "endTableId": 0, "endFieldId": 0, "name": "cash_forecast_snapshot_project_key_fk", "cardinality": "many_to_one", "updateConstraint": "No action", "deleteConstraint": "No action", "id": 2},
+    {"startTableId": 4, "startFieldId": 1, "endTableId": 0, "endFieldId": 0, "name": "working_capital_snapshot_project_key_fk", "cardinality": "many_to_one", "updateConstraint": "No action", "deleteConstraint": "No action", "id": 3},
+    {"startTableId": 5, "startFieldId": 1, "endTableId": 4, "endFieldId": 0, "name": "working_capital_recommendation_working_capital_snapshot_id_fk", "cardinality": "many_to_one", "updateConstraint": "No action", "deleteConstraint": "No action", "id": 4}
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "types": [],
+  "enums": [],
+  "views": []
+}
